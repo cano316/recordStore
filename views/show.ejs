@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+    <h1>
+        <%= foundProduct.title %>
+    </h1>
+    <h3>
+        <%= foundProduct.artist %>
+    </h3>
+    <h4>
+        Price: <%= foundProduct.price %>
+    </h4>
+    <h5>
+        Format: <%= foundProduct.format%>
+    </h5>
+    <p>
+        genre: <%= foundProduct.genre %>
+    </p>
+    <a href="/products/<%= foundProduct._id%>/edit">Edit Product</a>
+    <a href="/products">Back to Index</a>
+    <%- include('partials/footer') %>

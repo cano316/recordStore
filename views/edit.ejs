@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+    <h1>Update Product</h1>
+    <form action="/products/<%= foundProduct._id %>?_method=PATCH" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="Album Title" value="<%= foundProduct.title %>" required>
+        <label for="artist">Artist:</label>
+        <input type="text" name="artist" id="artist" placeholder="Album Artist" value="<%= foundProduct.artist %>"
+            required>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" placeholder="Price" value="<%= foundProduct.price %>" required>
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre" placeholder="Genre" value="<%= foundProduct.genre %>" required>
+        <label for="format">Format</label>
+        <select name="format" id="format" required>
+            <option value="CD">CD</option>
+            <option value="LP">LP</option>
+            <option value="Cassette">Cassette</option>
+            <option value="Reel-To-Reel">Reel-To-Reel</option>
+            <option value="8-Track">8-Track</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/products">Cancel</a>
+    <%- include('partials/footer.ejs') %>
