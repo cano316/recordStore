@@ -30,9 +30,15 @@ const Product = require('./models/products')
 
 // Index
 app.get('/products', async (req, res) => {
-    // Query for all documents in my database
-    const products = await Product.find({});
-    res.render('index', { products })
+    const { genre } = req.query;
+    if (genre) {
+        const products = await Product.find({ genre })
+        res.render('index', { products, genre })
+    } else {
+        // Query for all documents in my database
+        const products = await Product.find({});
+        res.render('index', { products, genre: 'All' })
+    }
 })
 // Serving the form to add a new product to the store
 app.get('/products/new', (req, res) => {
@@ -72,6 +78,12 @@ app.patch('/products/:id', async (req, res) => {
     res.redirect(`/products/${foundProduct._id}`)
 })
 
+// Delete a specific product off of the server
+app.delete('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.redirect('/products')
+})
 // Listen to Port
 app.listen(PORT, function () {
     console.log(`LISTENING ON PORT ${PORT}`)

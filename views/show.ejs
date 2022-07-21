@@ -1,19 +1,31 @@
 <%- include('partials/header') %>
-    <h1>
-        <%= foundProduct.title %>
-    </h1>
-    <h3>
-        <%= foundProduct.artist %>
-    </h3>
-    <h4>
-        Price: <%= foundProduct.price %>
-    </h4>
-    <h5>
-        Format: <%= foundProduct.format%>
-    </h5>
-    <p>
-        genre: <%= foundProduct.genre %>
-    </p>
-    <a href="/products/<%= foundProduct._id%>/edit">Edit Product</a>
-    <a href="/products">Back to Index</a>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h1 class="card-title">
+                <%= foundProduct.title %>
+            </h1>
+            <h3 class="card-subtitle">
+                <%= foundProduct.artist %>
+            </h3>
+            <h4 class="card-text">
+                Price: <%= foundProduct.price %>
+            </h4>
+            <h5>
+                Format: <%= foundProduct.format%>
+            </h5>
+            <p>
+                genre: <a href="/products?genre=<%= foundProduct.genre %>">
+                    <%= foundProduct.genre %>
+                </a>
+            </p>
+            <div class="links-group mb-2">
+                <a class="btn btn-success" href="/products/<%= foundProduct._id%>/edit">Edit Product</a>
+                <a class="btn btn-warning" href="/products">Back to Index</a>
+            </div>
+            <form action="/products/<%= foundProduct._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want remove <%= foundProduct.title %> from the record store?')">Delete</button>
+            </form>
+        </div>
+    </div>
     <%- include('partials/footer') %>
