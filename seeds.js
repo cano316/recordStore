@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 main().catch(e => console.log(e))
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/recordStore');
+    await mongoose.connect('mongodb+srv://admin-christian:test123@cluster0.zgmry.mongodb.net/recordStore');
     console.log('Connected to MongoDB from seeds.js')
 }
 
