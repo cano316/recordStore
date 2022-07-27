@@ -2,8 +2,25 @@
     <h1 class="text-center">
         <%= genre %> Products
     </h1>
-    <div class="row justify-content-end">
-        <div class="col-2">
+
+    <div class="row border-5">
+        <div class="col input-group">
+            <form action="/products" method="get" class="row">
+                <div class="col-auto">
+                    <select class="form-select" name="price" id="price">
+                        <option value="" selected disabled>Select a price</option>
+                        <option value="25">Under $25</option>
+                        <option value="50">Under $50</option>
+                        <option value="75">Under $75</option>
+                        <option value="100">Under $100</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Sort</button>
+                </div>
+            </form>
+        </div>
+        <div class="col d-flex">
             <a href="/products/new" class="btn btn-sm btn-success">Add New Product</a>
         </div>
     </div>

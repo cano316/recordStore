@@ -27,11 +27,17 @@ async function main() {
 const Product = require('./models/products')
 
 // Routes
-
+app.get('/', (req, res) => {
+    res.redirect('products')
+});
 // Index
 app.get('/products', async (req, res) => {
-    const { genre } = req.query;
-    if (genre) {
+    const { price, genre } = req.query;
+
+    if (price) {
+        const products = await Product.find({ price: { $lt: price } });
+        res.render('index', { products, genre: 'All', price })
+    } else if (genre) {
         const products = await Product.find({ genre })
         res.render('index', { products, genre })
     } else {
